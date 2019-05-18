@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.452
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HorseMarket.Api", "HorseMarcket.Api\HorseMarket.Api.csproj", "{4FEEE1FB-369F-4E1B-88CE-774703AB174C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HorseMarket.Application", "HorseMarcket.Application\HorseMarket.Application.csproj", "{806B2FFD-746D-47BE-BA27-7A98BCFF1235}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HorseMarket.Core", "HorseMarket.Core\HorseMarket.Core.csproj", "{2C228DFD-2B14-4BCA-97C3-A276F3EA2197}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HorseMarket.Infra", "HorseMarket.Infra\HorseMarket.Infra.csproj", "{561968B4-AF38-42E5-8D38-F99B0DAB15CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HorseMarket.Infra.CrossCutting", "HorseMarket.Infra.CrossCutting\HorseMarket.Infra.CrossCutting.csproj", "{0B09CF6B-8E74-4638-B7AC-0663C183AB94}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4FEEE1FB-369F-4E1B-88CE-774703AB174C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FEEE1FB-369F-4E1B-88CE-774703AB174C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FEEE1FB-369F-4E1B-88CE-774703AB174C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FEEE1FB-369F-4E1B-88CE-774703AB174C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{806B2FFD-746D-47BE-BA27-7A98BCFF1235}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{806B2FFD-746D-47BE-BA27-7A98BCFF1235}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{806B2FFD-746D-47BE-BA27-7A98BCFF1235}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{806B2FFD-746D-47BE-BA27-7A98BCFF1235}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C228DFD-2B14-4BCA-97C3-A276F3EA2197}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C228DFD-2B14-4BCA-97C3-A276F3EA2197}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C228DFD-2B14-4BCA-97C3-A276F3EA2197}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C228DFD-2B14-4BCA-97C3-A276F3EA2197}.Release|Any CPU.Build.0 = Release|Any CPU
+		{561968B4-AF38-42E5-8D38-F99B0DAB15CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{561968B4-AF38-42E5-8D38-F99B0DAB15CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{561968B4-AF38-42E5-8D38-F99B0DAB15CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{561968B4-AF38-42E5-8D38-F99B0DAB15CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B09CF6B-8E74-4638-B7AC-0663C183AB94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B09CF6B-8E74-4638-B7AC-0663C183AB94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B09CF6B-8E74-4638-B7AC-0663C183AB94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B09CF6B-8E74-4638-B7AC-0663C183AB94}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {144E405A-E344-4195-8524-C097D33C39F0}
+	EndGlobalSection
+EndGlobal
