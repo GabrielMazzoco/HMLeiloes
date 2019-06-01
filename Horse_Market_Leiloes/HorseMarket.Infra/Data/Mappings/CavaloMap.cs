@@ -34,13 +34,11 @@ namespace HorseMarket.Infra.Data.Mappings
             builder.Property(x => x.Estagio)
                 .IsRequired();
 
-            builder.HasOne(x => x.Mae)
-                .WithMany(x => x.Pais)
-                .HasForeignKey(x => x.MaeId);
+            builder.Property(x => x.Pai)
+                .IsRequired();
 
-            builder.HasOne(x => x.Pai)
-                .WithMany(x => x.Pais)
-                .HasForeignKey(x => x.PaiId);
+            builder.Property(x => x.Mae)
+                .IsRequired();
 
             builder.HasOne(x => x.Haras)
                 .WithMany(x => x.Cavalos)
