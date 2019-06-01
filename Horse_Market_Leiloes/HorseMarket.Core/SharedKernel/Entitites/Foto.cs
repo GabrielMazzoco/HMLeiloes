@@ -7,7 +7,6 @@ namespace HorseMarket.Core.SharedKernel.Entitites
     public class Foto : BaseEntity<Foto>
     {
         public string Url { get; set; }
-        public string Description { get; set; }
         public DateTime DateAdded { get; set; }
         public bool IsMain { get; set; }
         public string PublicId { get; set; }

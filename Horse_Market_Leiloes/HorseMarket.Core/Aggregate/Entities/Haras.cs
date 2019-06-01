@@ -1,4 +1,5 @@
-﻿using HorseMarket.Core.SharedKernel.Entitites;
+﻿using System.Collections.Generic;
+using HorseMarket.Core.SharedKernel.Entitites;
 
 namespace HorseMarket.Core.Aggregate.Entities
 {
@@ -12,5 +13,6 @@ namespace HorseMarket.Core.Aggregate.Entities
         public int LocalidadeId { get; set; }
 
         public virtual Localidade Localidade { get; set; }
+        public virtual ICollection<Cavalo> Cavalos { get; set; }
     }
 }

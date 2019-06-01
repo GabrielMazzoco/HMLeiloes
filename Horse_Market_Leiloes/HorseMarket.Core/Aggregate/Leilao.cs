@@ -12,6 +12,7 @@ namespace HorseMarket.Core.Aggregate
         public string Nome { get; set; }
         public int FotoId { get; set; }
         public string Contato { get; set; }
+        public string Descricao { get; set; }
 
         public virtual Foto Foto { get; set; }
         public virtual ICollection<Lote> Lotes { get; set; }

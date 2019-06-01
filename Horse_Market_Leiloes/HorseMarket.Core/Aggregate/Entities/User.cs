@@ -19,8 +19,9 @@ namespace HorseMarket.Core.Aggregate.Entities
         public bool Arrependido { get; set; }
         public int LocalidadeId { get; set; }
 
-        public virtual ICollection<Cavalo> Cavalos { get; set; }
         public virtual Localidade Localidade { get; set; }
         public virtual Foto Foto { get; set; }
+        public virtual ICollection<Cavalo> Cavalos { get; set; }
+        public virtual ICollection<Lance> Lances { get; set; }
     }
 }

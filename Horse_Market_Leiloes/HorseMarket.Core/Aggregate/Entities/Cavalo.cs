@@ -25,5 +25,6 @@ namespace HorseMarket.Core.Aggregate.Entities
         public virtual User Dono { get; set; }
         public virtual Lote Lote { get; set; }
         public virtual ICollection<Foto> Fotos { get; set; }
+        public virtual ICollection<Cavalo> Pais { get; set; }
     }
 }
