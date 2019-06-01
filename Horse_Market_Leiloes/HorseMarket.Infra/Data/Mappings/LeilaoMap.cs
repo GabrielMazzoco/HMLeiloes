@@ -23,15 +23,15 @@ namespace HorseMarket.Infra.Data.Mappings
                 .IsRequired();
 
             builder.Property(x => x.Nome)
+                .HasMaxLength(100)
                 .IsRequired();
 
             builder.Property(x => x.Contato)
+                .HasMaxLength(100)
                 .IsRequired();
 
             builder.Property(x => x.Descricao)
                 .IsRequired();
-
-
         }
     }
 }

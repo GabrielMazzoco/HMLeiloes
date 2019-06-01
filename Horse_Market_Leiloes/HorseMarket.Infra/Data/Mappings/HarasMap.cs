@@ -17,15 +17,19 @@ namespace HorseMarket.Infra.Data.Mappings
                 .IsRequired();
 
             builder.Property(x => x.Nome)
+                .HasMaxLength(100)
                 .IsRequired();
 
             builder.Property(x => x.Dono)
+                .HasMaxLength(100)
                 .IsRequired(false);
 
             builder.Property(x => x.Telefone)
+                .HasMaxLength(30)
                 .IsRequired(false);
 
             builder.Property(x => x.Email)
+                .HasMaxLength(100)
                 .IsRequired(false);
 
             builder.Property(x => x.QtdCavalos)

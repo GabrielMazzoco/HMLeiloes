@@ -24,11 +24,13 @@ namespace HorseMarket.Infra.Data.Mappings
 
             builder.HasOne(x => x.User)
                 .WithMany(x => x.Lances)
-                .HasForeignKey(x => x.UserId);
+                .HasForeignKey(x => x.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(x => x.Lote)
                 .WithMany(x => x.Lances)
-                .HasForeignKey(x => x.LoteId);
+                .HasForeignKey(x => x.LoteId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

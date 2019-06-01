@@ -17,9 +17,11 @@ namespace HorseMarket.Infra.Data.Mappings
                 .IsRequired();
 
             builder.Property(x => x.Username)
+                .HasMaxLength(100)
                 .IsRequired();
 
             builder.Property(x => x.Name)
+                .HasMaxLength(100)
                 .IsRequired();
 
             builder.Property(x => x.PasswordHash)
@@ -31,6 +33,7 @@ namespace HorseMarket.Infra.Data.Mappings
                 .IsRequired();
 
             builder.Property(x => x.Gender)
+                .HasMaxLength(100)
                 .IsRequired();
 
             builder.Property(x => x.IsAdmin)
@@ -53,7 +56,8 @@ namespace HorseMarket.Infra.Data.Mappings
 
             builder.HasMany(x => x.Cavalos)
                 .WithOne(x => x.Dono)
-                .HasForeignKey(x => x.UserId);
+                .HasForeignKey(x => x.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

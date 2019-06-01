@@ -30,11 +30,13 @@ namespace HorseMarket.Infra.Data.Mappings
 
             builder.HasOne(x => x.Leilao)
                 .WithMany(x => x.Lotes)
-                .HasForeignKey(x => x.LeilaoId);
+                .HasForeignKey(x => x.LeilaoId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(x => x.Cavalo)
                 .WithOne(x => x.Lote)
-                .HasForeignKey<Lote>(x => x.CavaloId);
+                .HasForeignKey<Lote>(x => x.CavaloId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
