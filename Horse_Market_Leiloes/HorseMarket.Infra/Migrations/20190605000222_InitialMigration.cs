@@ -9,6 +9,31 @@ namespace HorseMarket.Infra.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "User",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Ativo = table.Column<bool>(nullable: false),
+                    Username = table.Column<string>(maxLength: 100, nullable: false),
+                    Name = table.Column<string>(maxLength: 100, nullable: false),
+                    PasswordHash = table.Column<byte[]>(maxLength: 64, nullable: false),
+                    PasswordSalt = table.Column<byte[]>(maxLength: 128, nullable: false),
+                    Gender = table.Column<string>(maxLength: 100, nullable: false),
+                    IsAdmin = table.Column<bool>(nullable: false),
+                    DateOfBirth = table.Column<DateTime>(nullable: false),
+                    Created = table.Column<DateTime>(nullable: false),
+                    LastActive = table.Column<DateTime>(nullable: false),
+                    Banido = table.Column<bool>(nullable: false),
+                    Arrependido = table.Column<bool>(nullable: false),
+                    LocalidadeId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_User", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Localidade",
                 columns: table => new
                 {
@@ -20,11 +45,18 @@ namespace HorseMarket.Infra.Migrations
                     Cep = table.Column<string>(maxLength: 20, nullable: false),
                     Logradouro = table.Column<string>(maxLength: 100, nullable: true),
                     Complemento = table.Column<string>(maxLength: 100, nullable: true),
-                    Bairo = table.Column<string>(maxLength: 100, nullable: true)
+                    Bairo = table.Column<string>(maxLength: 100, nullable: true),
+                    UserId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Localidade", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Localidade_User_UserId",
+                        column: x => x.UserId,
+                        principalTable: "User",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -46,37 +78,6 @@ namespace HorseMarket.Infra.Migrations
                     table.PrimaryKey("PK_Haras", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Haras_Localidade_LocalidadeId",
-                        column: x => x.LocalidadeId,
-                        principalTable: "Localidade",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "User",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Ativo = table.Column<bool>(nullable: false),
-                    Username = table.Column<string>(maxLength: 100, nullable: false),
-                    Name = table.Column<string>(maxLength: 100, nullable: false),
-                    PasswordHash = table.Column<byte[]>(maxLength: 64, nullable: false),
-                    PasswordSalt = table.Column<byte[]>(maxLength: 128, nullable: false),
-                    Gender = table.Column<string>(maxLength: 100, nullable: false),
-                    IsAdmin = table.Column<bool>(nullable: false),
-                    DateOfBirth = table.Column<DateTime>(nullable: false),
-                    Created = table.Column<DateTime>(nullable: false),
-                    LasActive = table.Column<DateTime>(nullable: false),
-                    Banido = table.Column<bool>(nullable: false),
-                    Arrependido = table.Column<bool>(nullable: false),
-                    LocalidadeId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_User", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_User_Localidade_LocalidadeId",
                         column: x => x.LocalidadeId,
                         principalTable: "Localidade",
                         principalColumn: "Id",
@@ -291,6 +292,12 @@ namespace HorseMarket.Infra.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Localidade_UserId",
+                table: "Localidade",
+                column: "UserId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Lote_CavaloId",
                 table: "Lote",
                 column: "CavaloId",
@@ -300,12 +307,6 @@ namespace HorseMarket.Infra.Migrations
                 name: "IX_Lote_LeilaoId",
                 table: "Lote",
                 column: "LeilaoId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_User_LocalidadeId",
-                table: "User",
-                column: "LocalidadeId",
-                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -329,10 +330,10 @@ namespace HorseMarket.Infra.Migrations
                 name: "Haras");
 
             migrationBuilder.DropTable(
-                name: "User");
+                name: "Localidade");
 
             migrationBuilder.DropTable(
-                name: "Localidade");
+                name: "User");
         }
     }
 }

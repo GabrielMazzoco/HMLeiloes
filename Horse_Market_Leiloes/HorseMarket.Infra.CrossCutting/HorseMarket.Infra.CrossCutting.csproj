@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\HorseMarcket.Application\HorseMarket.Application.csproj" />
     <ProjectReference Include="..\HorseMarket.Core\HorseMarket.Core.csproj" />
     <ProjectReference Include="..\HorseMarket.Infra\HorseMarket.Infra.csproj" />
   </ItemGroup>

@@ -15,6 +15,7 @@ namespace HorseMarket.Core.SharedKernel.Interfaces
         void Delete(int id);
         IEnumerable<T> FindAsNoTracking(Expression<Func<T, bool>> predicate);
         IEnumerable<T> Find(Expression<Func<T, bool>> predicate);
+        bool Any(Expression<Func<T, bool>> predicate);
         IEnumerable<T> All();
         void Commit();
     }

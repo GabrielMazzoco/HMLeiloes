@@ -33,6 +33,9 @@ namespace HorseMarket.Api
             // Adding Authentication Jwt to the Applcation.
             services.AddAuthenticationJwt(Configuration);
 
+            // AutoMapper
+            services.AddMapper();
+
             // Configuration of the Swagger
             services.AddSwaggerConfiguration();
         }

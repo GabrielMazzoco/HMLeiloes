@@ -63,6 +63,11 @@ namespace HorseMarket.Infra.Data.Repositories
             return _dbContext.Set<T>().Where(predicate).ToList();
         }
 
+        public bool Any(Expression<Func<T, bool>> predicate)
+        {
+            return _dbContext.Set<T>().Any(predicate);
+        }
+
         public IEnumerable<T> FindAsNoTracking(Expression<Func<T, bool>> predicate)
         {
             return _dbContext.Set<T>().AsNoTracking().Where(predicate).ToList();

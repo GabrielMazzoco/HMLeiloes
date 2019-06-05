@@ -45,7 +45,7 @@ namespace HorseMarket.Infra.Data.Mappings
             builder.Property(x => x.Created)
                 .IsRequired();
 
-            builder.Property(x => x.LasActive)
+            builder.Property(x => x.LastActive)
                 .IsRequired();
 
             builder.Property(x => x.Banido)

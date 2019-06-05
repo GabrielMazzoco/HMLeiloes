@@ -14,7 +14,7 @@ namespace HorseMarket.Core.Aggregate.Entities
         public bool IsAdmin { get; set; }
         public DateTime DateOfBirth { get; set; }
         public DateTime Created { get; set; }
-        public DateTime LasActive { get; set; }
+        public DateTime LastActive { get; set; }
         public bool Banido { get; set; }
         public bool Arrependido { get; set; }
         public int LocalidadeId { get; set; }
