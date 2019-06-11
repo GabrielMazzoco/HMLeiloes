@@ -3,6 +3,7 @@ import { AuthService } from '../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { User } from '../models/user.model';
+import { LocalStorageUtils } from 'src/app/shared/utils/localstorage.utils';
 
 @Component({
   selector: 'app-navbar',
@@ -21,16 +22,8 @@ export class NavbarComponent implements OnInit {
   }
 
   login() {
-    this.authService.login(this.model).subscribe(
-      next => {
-        this.toastrService.success('Logged in Successfully');
-      },
-      error => {
-        this.toastrService.error(error);
-      },
-      () => {
-        // this.router.navigate(["/members"]);
-      }
-    );
+    this.authService.logar(this.model, response => {
+      console.log(response);
+    });
   }
 }

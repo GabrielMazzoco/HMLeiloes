@@ -11,6 +11,8 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { CommonModule } from '@angular/common';
 import { AuthService } from './components/services/auth.service';
+import { InfraModule } from './infra/infra.module';
+import { RequestStatusService } from './infra/request-status.service';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -27,6 +29,7 @@ export function tokenGetter() {
     AppRoutingModule,
     HttpClientModule,
     CommonModule,
+    InfraModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(),
     JwtModule.forRoot({
@@ -37,7 +40,7 @@ export function tokenGetter() {
       }
     })
   ],
-  providers: [AuthService],
+  providers: [AuthService, RequestStatusService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

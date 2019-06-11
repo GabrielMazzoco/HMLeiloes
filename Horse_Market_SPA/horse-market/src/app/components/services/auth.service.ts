@@ -2,27 +2,35 @@ import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user.model';
-import { map } from "rxjs/operators";
+import { map } from 'rxjs/operators';
+import { BaseService } from 'src/app/infra/base-service';
+import { HttpClientConnection } from 'src/app/infra/http/http-client-connection';
+import { RequestStatusService } from 'src/app/infra/request-status.service';
+import { HttpConnectionBuilder } from 'src/app/infra/http/http-connection-builder';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthService implements BaseService {
+  public requestEnd: boolean;
+  public isShowBigLoading: boolean;
   jwtHelper: JwtHelperService = new JwtHelperService();
   decodedToken: any;
-  baseUrl: string = 'http://localhost:5000/api/';
+  baseUrl = 'http://localhost:5000/api/';
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private httpConnection: HttpClientConnection,
+    public requestStatusService: RequestStatusService) { }
 
-  public login(user: User) {
-    return this.http.post(`${this.baseUrl}Auth/login`, user).pipe(
-      map((response: any) => {
-        if (response.token) {
-          localStorage.setItem('token', response.token);
-          localStorage.setItem('user', JSON.stringify(response.username));
-          this.decodedToken = this.jwtHelper.decodeToken(response.token);
-        }
-      })
+  public logar(user: User, handlerSucess: (value: any) => void) {
+    return new HttpConnectionBuilder<any>(
+      this.httpConnection,
+      this.requestStatusService
     )
+    .addServerDomain(`${this.baseUrl}Auth/login`)
+    .addParameter(user)
+    .addHandlerSuccess(handlerSucess)
+    .buildPost();
+
   }
 }
