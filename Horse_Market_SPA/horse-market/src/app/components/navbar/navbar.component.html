@@ -1,8 +1,9 @@
-<nav class="navbar navbar-expand-md navbar-dark -top bg-primary">
+<nav class="navbar navbar-expand-md navbar-dark -top bg-dark">
   <div class="container">
     <a class="navbar-brand" [routerLink]="['/home']">Horse Market Leilões</a>
 
     <form
+      *ngIf="!isLogado"
       #loginForm="ngForm"
       class="form-inline my-2 my-lg-0"
       (ngSubmit)="login()"

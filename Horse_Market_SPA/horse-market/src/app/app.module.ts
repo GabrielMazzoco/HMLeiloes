@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 import { AuthService } from './components/services/auth.service';
 import { InfraModule } from './infra/infra.module';
 import { RequestStatusService } from './infra/request-status.service';
+import { LoginComponent } from './components/login/login.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -21,7 +22,8 @@ export function tokenGetter() {
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    LoginComponent
   ],
   imports: [
     FormsModule,
@@ -36,7 +38,7 @@ export function tokenGetter() {
       config: {
         tokenGetter: tokenGetter,
         whitelistedDomains: ['localhost:5000'],
-        blacklistedRoutes: ['localhost:5000/api/auth']
+        blacklistedRoutes: ['localhost:5000/api/Auth']
       }
     })
   ],

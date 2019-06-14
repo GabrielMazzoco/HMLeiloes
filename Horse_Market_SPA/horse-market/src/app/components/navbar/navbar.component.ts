@@ -12,6 +12,7 @@ import { LocalStorageUtils } from 'src/app/shared/utils/localstorage.utils';
 })
 export class NavbarComponent implements OnInit {
   public model: User = new User();
+  public isLogado = false;
 
   constructor(
     public authService: AuthService,
@@ -23,7 +24,10 @@ export class NavbarComponent implements OnInit {
 
   login() {
     this.authService.logar(this.model, response => {
-      console.log(response);
+      LocalStorageUtils.push('token', response.token);
+      LocalStorageUtils.push('username', response.username);
+      this.toastrService.success('Logado com sucesso!');
+      this.isLogado = true;
     });
   }
 }
