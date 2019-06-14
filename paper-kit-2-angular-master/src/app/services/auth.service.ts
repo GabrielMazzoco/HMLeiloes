@@ -20,7 +20,7 @@ export class AuthService implements BaseService {
     private httpConnection: HttpClientConnection,
     public requestStatusService: RequestStatusService) { }
 
-  public logar(user: User, handlerSucess: (value: any) => void) {
+  public logar(user: User, handlerSucess: (value: any) => void, handlerError: (value: any) => void) {
     return new HttpConnectionBuilder<any>(
       this.httpConnection,
       this.requestStatusService
@@ -28,6 +28,19 @@ export class AuthService implements BaseService {
     .addServerDomain(`${this.baseUrl}Auth/login`)
     .addParameter(user)
     .addHandlerSuccess(handlerSucess)
+    .addHandlerError(handlerError)
+    .buildPost();
+  }
+
+  public register(user: User, handlerSucess: (value: any) => void, handlerError: (value: any) => void) {
+    return new HttpConnectionBuilder<any>(
+      this.httpConnection,
+      this.requestStatusService
+    )
+    .addServerDomain(`${this.baseUrl}Auth/register`)
+    .addParameter(user)
+    .addHandlerSuccess(handlerSucess)
+    .addHandlerError(handlerError)
     .buildPost();
   }
 }

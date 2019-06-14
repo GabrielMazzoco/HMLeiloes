@@ -11,11 +11,9 @@ import { AuthService } from 'app/services/auth.service';
     styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-    test : Date = new Date();
     focus;
     focus1;
     public model: User = new User();
-    public isLogado = false;
 
   constructor(
     public authService: AuthService,
@@ -30,7 +28,9 @@ export class SignupComponent implements OnInit {
       LocalStorageUtils.push('token', response.token);
       LocalStorageUtils.push('username', response.username);
       this.toastrService.success('Logado com sucesso!');
-      this.isLogado = true;
+      this.router.navigateByUrl(`/home`);
+    }, error => {
+      this.toastrService.error(error.message);
     });
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
     selector: 'app-navbar',
@@ -9,8 +10,9 @@ import { Location, LocationStrategy, PathLocationStrategy } from '@angular/commo
 export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
+    private jwtHelper: JwtHelperService = new JwtHelperService();
 
-    constructor(public location: Location, private element : ElementRef) {
+    constructor(public location: Location, private element: ElementRef) {
         this.sidebarVisible = false;
     }
 
@@ -48,22 +50,46 @@ export class NavbarComponent implements OnInit {
         }
     };
     isHome() {
-        var titlee = this.location.prepareExternalUrl(this.location.path());
+        const titlee = this.location.prepareExternalUrl(this.location.path());
 
-        if( titlee === '/home' ) {
+        if ( titlee === '/home' ) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
     isDocumentation() {
-        var titlee = this.location.prepareExternalUrl(this.location.path());
-        if( titlee === '/documentation' ) {
+        const titlee = this.location.prepareExternalUrl(this.location.path());
+        if ( titlee === '/documentation' ) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
+    }
+    isSignUp() {
+        const titlee = this.location.prepareExternalUrl(this.location.path());
+        if ( titlee === '/signin' ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    isRegister() {
+        const titlee = this.location.prepareExternalUrl(this.location.path());
+        if ( titlee === '/register' ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    isLoggedIn() {
+        const token = localStorage.getItem('token');
+        return !this.jwtHelper.isTokenExpired(token);
+    }
+
+    sair() {
+        localStorage.removeItem('token');
+        localStorage.removeItem('username');
     }
 }

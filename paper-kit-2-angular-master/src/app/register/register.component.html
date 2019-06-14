@@ -1,0 +1,71 @@
+<div class="wrapper">
+  <div class="page-header" style="background-image: url('./assets/img/cavalo.jpg');">
+      <div class="filter"></div>
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-4 col-sm-6 mr-auto ml-auto">
+                    <div class="card card-register">
+                        <h3 class="title">Registre-se</h3>
+                        
+                        <form class="register-form" #loginForm="ngForm" (ngSubmit)="register()">
+                            <label>Nome Completo</label>
+                            <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
+                              <div class="input-group-prepend">
+                              </div>
+                                <input type="text" class="form-control" placeholder="Nome Completo" 
+                                (focus)="focus=true" (blur)="focus=false" name="name" [(ngModel)]="model.name">
+                            </div>  
+                          
+                            <label>Username</label>
+                            <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
+                              <div class="input-group-prepend">
+                              </div>
+                                <input type="text" class="form-control" placeholder="Username" 
+                                (focus)="focus=true" (blur)="focus=false" name="username" [(ngModel)]="model.username">
+                            </div>
+
+                            <label>Password</label>
+                            <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus1===true}">
+                              <div class="input-group-prepend">
+                              </div>
+                                <input type="text" class="form-control" placeholder="Password" type="password"
+                                (focus)="focus1=true" (blur)="focus1=false" name="password" [(ngModel)]="model.password">
+                            </div>
+
+                            <label>Data de Nascimento</label>
+                            <div class="input-group date" [ngClass]="{'input-group-focus':focus===true}">
+                                <input class="form-control" placeholder="yyyy-mm-dd" [minDate]="{year: 1920, month: 1, day: 1}"
+                                     [maxDate]="{year: 2010, month: 12, day: 31}"
+                                     name="ngbDate" [(ngModel)]="ngbDate" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()" 
+                                     (focus)="focus=true" (blur)="focus=false" />
+                                <div class="input-group-append">
+                                    <span class="glyphicon glyphicon-calendar input-group-text">
+                                      <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                            <div class="form-check-radio ml-4 mt-3">
+                              <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="gender" value="masculino" [(ngModel)]="model.gender" >
+                                Masculino
+                                <span class="form-check-sign"></span>
+                              </label>
+                            </div>
+                            <div class="form-check-radio ml-3 mt-3">
+                                <label class="form-check-label">
+                                  <input class="form-check-input" type="radio" name="gender" value="feminino" [(ngModel)]="model.gender" >
+                                  Feminino
+                                  <span class="form-check-sign"></span>
+                                </label>
+                              </div>
+                          </div>
+                          <button class="btn btn-danger btn-block btn-round" type="submit">Registrar</button>
+                        </form>
+                    </div>
+                  </div>
+              </div>
+          </div>
+  </div>
+</div>
