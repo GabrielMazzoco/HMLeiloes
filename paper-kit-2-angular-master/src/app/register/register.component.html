@@ -45,6 +45,14 @@
                                 </div>
                             </div>
 
+                            <label>Cep</label>
+                            <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus1===true}">
+                              <div class="input-group-prepend">
+                              </div>
+                                <input type="text" class="form-control" placeholder="Cep" type="text"
+                                (focus)="focus1=true" (blur)="focus1=false" name="cep" [(ngModel)]="model.cep">
+                            </div>
+
                             <div class="row">
                             <div class="form-check-radio ml-4 mt-3">
                               <label class="form-check-label">
@@ -59,7 +67,7 @@
                                   Feminino
                                   <span class="form-check-sign"></span>
                                 </label>
-                              </div>
+                            </div>
                           </div>
                           <button class="btn btn-danger btn-block btn-round" type="submit">Registrar</button>
                         </form>

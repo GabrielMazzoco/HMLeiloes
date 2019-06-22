@@ -38,6 +38,9 @@ namespace HorseMarket.Api
 
             // Configuration of the Swagger
             services.AddSwaggerConfiguration();
+
+            // CloudnaryConfiguration
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

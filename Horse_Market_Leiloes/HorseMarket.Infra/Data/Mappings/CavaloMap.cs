@@ -51,6 +51,12 @@ namespace HorseMarket.Infra.Data.Mappings
                 .WithMany(x => x.Cavalos)
                 .HasForeignKey(x => x.HarasId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasOne(x => x.Localidade)
+                .WithOne(x => x.Cavalo)
+                .HasForeignKey<Cavalo>(x => x.LocalidadeId)
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired(false);
         }
     }
 }

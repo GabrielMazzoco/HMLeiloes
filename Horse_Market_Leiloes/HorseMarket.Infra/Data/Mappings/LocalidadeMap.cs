@@ -40,21 +40,6 @@ namespace HorseMarket.Infra.Data.Mappings
             builder.Property(x => x.Bairo)
                 .HasMaxLength(100)
                 .IsRequired(false);
-
-            builder.HasOne(x => x.Cavalo)
-                .WithOne(x => x.Localidade)
-                .HasForeignKey<Localidade>(x => x.CavaloId)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            builder.HasOne(x => x.Haras)
-                .WithOne(x => x.Localidade)
-                .HasForeignKey<Localidade>(x => x.HarasId)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            builder.HasOne(x => x.User)
-                .WithOne(x => x.Localidade)
-                .HasForeignKey<Localidade>(x => x.UserId)
-                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

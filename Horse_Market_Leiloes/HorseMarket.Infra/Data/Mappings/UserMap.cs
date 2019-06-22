@@ -1,4 +1,5 @@
 ﻿using HorseMarket.Core.Aggregate.Entities;
+using HorseMarket.Core.SharedKernel.Entitites;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -58,6 +59,12 @@ namespace HorseMarket.Infra.Data.Mappings
                 .WithOne(x => x.Dono)
                 .HasForeignKey(x => x.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasOne(x => x.Localidade)
+                .WithOne(x => x.User)
+                .HasForeignKey<User>(x => x.LocalidadeId)
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired(false);
         }
     }
 }

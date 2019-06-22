@@ -20,7 +20,7 @@ namespace HorseMarket.Core.SharedKernel.Service
 
         protected bool IsNotNullOrEmpty<T>(IEnumerable<T> obj)
         {
-            return obj.Any();
+            return obj != null && obj.Any();
         }
     }
 }

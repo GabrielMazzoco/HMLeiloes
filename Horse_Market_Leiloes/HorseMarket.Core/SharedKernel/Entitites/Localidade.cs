@@ -10,9 +10,6 @@ namespace HorseMarket.Core.SharedKernel.Entitites
         public string Logradouro { get; set; }
         public string Complemento { get; set; }
         public string Bairo { get; set; }
-        public int UserId { get; set; }
-        public int HarasId { get; set; }
-        public int CavaloId { get; set; }
 
         public virtual Haras Haras { get; set; }
         public virtual User User { get; set; }

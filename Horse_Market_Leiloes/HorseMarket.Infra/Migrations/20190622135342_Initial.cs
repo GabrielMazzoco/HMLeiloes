@@ -4,10 +4,54 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HorseMarket.Infra.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Localidade",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Ativo = table.Column<bool>(nullable: false),
+                    Cidade = table.Column<string>(maxLength: 100, nullable: false),
+                    Estado = table.Column<string>(maxLength: 50, nullable: false),
+                    Cep = table.Column<string>(maxLength: 20, nullable: false),
+                    Logradouro = table.Column<string>(maxLength: 100, nullable: true),
+                    Complemento = table.Column<string>(maxLength: 100, nullable: true),
+                    Bairo = table.Column<string>(maxLength: 100, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Localidade", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Haras",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Ativo = table.Column<bool>(nullable: false),
+                    Nome = table.Column<string>(maxLength: 100, nullable: false),
+                    Dono = table.Column<string>(maxLength: 100, nullable: true),
+                    Telefone = table.Column<string>(maxLength: 30, nullable: true),
+                    Email = table.Column<string>(maxLength: 100, nullable: true),
+                    QtdCavalos = table.Column<int>(nullable: false),
+                    LocalidadeId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Haras", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Haras_Localidade_LocalidadeId",
+                        column: x => x.LocalidadeId,
+                        principalTable: "Localidade",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateTable(
                 name: "User",
                 columns: table => new
@@ -26,58 +70,13 @@ namespace HorseMarket.Infra.Migrations
                     LastActive = table.Column<DateTime>(nullable: false),
                     Banido = table.Column<bool>(nullable: false),
                     Arrependido = table.Column<bool>(nullable: false),
-                    LocalidadeId = table.Column<int>(nullable: false)
+                    LocalidadeId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_User", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Localidade",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Ativo = table.Column<bool>(nullable: false),
-                    Cidade = table.Column<string>(maxLength: 100, nullable: false),
-                    Estado = table.Column<string>(maxLength: 50, nullable: false),
-                    Cep = table.Column<string>(maxLength: 20, nullable: false),
-                    Logradouro = table.Column<string>(maxLength: 100, nullable: true),
-                    Complemento = table.Column<string>(maxLength: 100, nullable: true),
-                    Bairo = table.Column<string>(maxLength: 100, nullable: true),
-                    UserId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Localidade", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Localidade_User_UserId",
-                        column: x => x.UserId,
-                        principalTable: "User",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Haras",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Ativo = table.Column<bool>(nullable: false),
-                    Nome = table.Column<string>(maxLength: 100, nullable: false),
-                    Dono = table.Column<string>(maxLength: 100, nullable: true),
-                    Telefone = table.Column<string>(maxLength: 30, nullable: true),
-                    Email = table.Column<string>(maxLength: 100, nullable: true),
-                    QtdCavalos = table.Column<int>(nullable: false),
-                    LocalidadeId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Haras", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Haras_Localidade_LocalidadeId",
+                        name: "FK_User_Localidade_LocalidadeId",
                         column: x => x.LocalidadeId,
                         principalTable: "Localidade",
                         principalColumn: "Id",
@@ -98,7 +97,7 @@ namespace HorseMarket.Infra.Migrations
                     DataNascimento = table.Column<DateTime>(nullable: false),
                     Estagio = table.Column<string>(maxLength: 100, nullable: false),
                     HarasId = table.Column<int>(nullable: false),
-                    LocalidadeId = table.Column<int>(nullable: false),
+                    LocalidadeId = table.Column<int>(nullable: true),
                     UserId = table.Column<int>(nullable: false),
                     Mae = table.Column<string>(maxLength: 100, nullable: false),
                     Pai = table.Column<string>(maxLength: 100, nullable: false)
@@ -137,8 +136,7 @@ namespace HorseMarket.Infra.Migrations
                     DateAdded = table.Column<DateTime>(nullable: false),
                     IsMain = table.Column<bool>(nullable: false),
                     PublicId = table.Column<string>(nullable: false),
-                    UserId = table.Column<int>(nullable: false),
-                    CavaloId = table.Column<int>(nullable: false)
+                    CavaloId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -147,12 +145,6 @@ namespace HorseMarket.Infra.Migrations
                         name: "FK_Foto_Cavalo_CavaloId",
                         column: x => x.CavaloId,
                         principalTable: "Cavalo",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Foto_User_UserId",
-                        column: x => x.UserId,
-                        principalTable: "User",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -167,7 +159,7 @@ namespace HorseMarket.Infra.Migrations
                     Inicio = table.Column<DateTime>(nullable: false),
                     Fim = table.Column<DateTime>(nullable: false),
                     Nome = table.Column<string>(maxLength: 100, nullable: false),
-                    FotoId = table.Column<int>(nullable: false),
+                    FotoId = table.Column<int>(nullable: true),
                     Contato = table.Column<string>(maxLength: 100, nullable: false),
                     Descricao = table.Column<string>(nullable: false)
                 },
@@ -251,7 +243,8 @@ namespace HorseMarket.Infra.Migrations
                 name: "IX_Cavalo_LocalidadeId",
                 table: "Cavalo",
                 column: "LocalidadeId",
-                unique: true);
+                unique: true,
+                filter: "[LocalidadeId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Cavalo_UserId",
@@ -264,16 +257,11 @@ namespace HorseMarket.Infra.Migrations
                 column: "CavaloId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Foto_UserId",
-                table: "Foto",
-                column: "UserId",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Haras_LocalidadeId",
                 table: "Haras",
                 column: "LocalidadeId",
-                unique: true);
+                unique: true,
+                filter: "[LocalidadeId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Lance_LoteId",
@@ -289,13 +277,8 @@ namespace HorseMarket.Infra.Migrations
                 name: "IX_Leiloes_FotoId",
                 table: "Leiloes",
                 column: "FotoId",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Localidade_UserId",
-                table: "Localidade",
-                column: "UserId",
-                unique: true);
+                unique: true,
+                filter: "[FotoId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Lote_CavaloId",
@@ -307,6 +290,13 @@ namespace HorseMarket.Infra.Migrations
                 name: "IX_Lote_LeilaoId",
                 table: "Lote",
                 column: "LeilaoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_User_LocalidadeId",
+                table: "User",
+                column: "LocalidadeId",
+                unique: true,
+                filter: "[LocalidadeId] IS NOT NULL");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -330,10 +320,10 @@ namespace HorseMarket.Infra.Migrations
                 name: "Haras");
 
             migrationBuilder.DropTable(
-                name: "Localidade");
+                name: "User");
 
             migrationBuilder.DropTable(
-                name: "User");
+                name: "Localidade");
         }
     }
 }

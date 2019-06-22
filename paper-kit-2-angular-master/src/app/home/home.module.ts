@@ -8,6 +8,8 @@ import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home.component';
 
 import { ComponentsModule } from '../components/components.module';
+import { LeilaoCardComponent } from 'app/leiloes/leilao-card/leilao-card.component';
+import { LeilaoService } from 'app/services/leilao.service';
 
 @NgModule({
     imports: [
@@ -17,8 +19,8 @@ import { ComponentsModule } from '../components/components.module';
         RouterModule,
         ComponentsModule
     ],
-    declarations: [ HomeComponent ],
+    declarations: [ HomeComponent, LeilaoCardComponent ],
     exports:[ HomeComponent ],
-    providers: []
+    providers: [LeilaoService]
 })
 export class HomeModule { }

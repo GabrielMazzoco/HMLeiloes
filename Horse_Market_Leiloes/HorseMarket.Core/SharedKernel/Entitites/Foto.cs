@@ -10,10 +10,8 @@ namespace HorseMarket.Core.SharedKernel.Entitites
         public DateTime DateAdded { get; set; }
         public bool IsMain { get; set; }
         public string PublicId { get; set; }
-        public int UserId { get; set; }
-        public int CavaloId { get; set; }
+        public int? CavaloId { get; set; }
 
-        public virtual User User { get; set; }
         public virtual Cavalo Cavalo { get; set; }
         public virtual Leilao Leilao { get; set; }
     }

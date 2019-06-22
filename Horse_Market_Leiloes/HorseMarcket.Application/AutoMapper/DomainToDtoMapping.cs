@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using HorseMarket.Core.Aggregate;
+using HorseMarket.Core.Aggregate.Dtos;
 
 namespace HorseMarket.Application.AutoMapper
 {
@@ -6,7 +8,8 @@ namespace HorseMarket.Application.AutoMapper
     {
         public DomainToDtoMapping()
         {
-
+            CreateMap<Leilao, LeilaoDto>()
+                .ForMember(dest => dest.FotoUrl, opt => opt.MapFrom(src => src.Foto.Url));
         }
     }
 }

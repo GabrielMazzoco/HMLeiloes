@@ -34,6 +34,12 @@ namespace HorseMarket.Infra.Data.Mappings
 
             builder.Property(x => x.QtdCavalos)
                 .IsRequired();
+
+            builder.HasOne(x => x.Localidade)
+                .WithOne(x => x.Haras)
+                .HasForeignKey<Haras>(x => x.LocalidadeId)
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired(false);
         }
     }
 }

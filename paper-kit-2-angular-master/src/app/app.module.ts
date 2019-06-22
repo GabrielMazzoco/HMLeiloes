@@ -20,6 +20,7 @@ import { HomeModule } from './home/home.module';
 import { InfraModule } from './infra/infra.module';
 import { RequestStatusService } from './infra/request-status.service';
 import { RegisterComponent } from './register/register.component';
+import { LeilaoCardComponent } from './leiloes/leilao-card/leilao-card.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');

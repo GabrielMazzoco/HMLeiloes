@@ -1,4 +1,6 @@
 ﻿using HorseMarket.Application.Services;
+using HorseMarket.Core.Aggregate.Interfaces.Repositories;
+using HorseMarket.Core.Aggregate.Interfaces.Services;
 using HorseMarket.Core.AuthAggregate.Interfaces;
 using HorseMarket.Core.SharedKernel.Interfaces;
 using HorseMarket.Infra.Data;
@@ -16,9 +18,13 @@ namespace HorseMarket.Infra.CrossCutting
 
             // Services
             services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<ILeilaoService, LeilaoService>();
+            services.AddScoped<IFotoService, FotoService>();
 
             // Repositories
             services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddScoped<ILeilaoRepository, LeilaoRepository>();
+            services.AddScoped<IFotoRepository, FotoRepository>();
 
             services.AddScoped<DataContext>();
         }

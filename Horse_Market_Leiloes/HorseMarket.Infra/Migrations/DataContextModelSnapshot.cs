@@ -39,7 +39,7 @@ namespace HorseMarket.Infra.Migrations
 
                     b.Property<int>("HarasId");
 
-                    b.Property<int>("LocalidadeId");
+                    b.Property<int?>("LocalidadeId");
 
                     b.Property<string>("Mae")
                         .IsRequired()
@@ -67,7 +67,8 @@ namespace HorseMarket.Infra.Migrations
                     b.HasIndex("HarasId");
 
                     b.HasIndex("LocalidadeId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[LocalidadeId] IS NOT NULL");
 
                     b.HasIndex("UserId");
 
@@ -88,7 +89,7 @@ namespace HorseMarket.Infra.Migrations
                     b.Property<string>("Email")
                         .HasMaxLength(100);
 
-                    b.Property<int>("LocalidadeId");
+                    b.Property<int?>("LocalidadeId");
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -102,7 +103,8 @@ namespace HorseMarket.Infra.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("LocalidadeId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[LocalidadeId] IS NOT NULL");
 
                     b.ToTable("Haras");
                 });
@@ -186,7 +188,7 @@ namespace HorseMarket.Infra.Migrations
 
                     b.Property<DateTime>("LastActive");
 
-                    b.Property<int>("LocalidadeId");
+                    b.Property<int?>("LocalidadeId");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -205,6 +207,10 @@ namespace HorseMarket.Infra.Migrations
                         .HasMaxLength(100);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("LocalidadeId")
+                        .IsUnique()
+                        .HasFilter("[LocalidadeId] IS NOT NULL");
 
                     b.ToTable("User");
                 });
@@ -226,7 +232,7 @@ namespace HorseMarket.Infra.Migrations
 
                     b.Property<DateTime>("Fim");
 
-                    b.Property<int>("FotoId");
+                    b.Property<int?>("FotoId");
 
                     b.Property<DateTime>("Inicio");
 
@@ -237,7 +243,8 @@ namespace HorseMarket.Infra.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("FotoId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[FotoId] IS NOT NULL");
 
                     b.ToTable("Leiloes");
                 });
@@ -250,7 +257,7 @@ namespace HorseMarket.Infra.Migrations
 
                     b.Property<bool>("Ativo");
 
-                    b.Property<int>("CavaloId");
+                    b.Property<int?>("CavaloId");
 
                     b.Property<DateTime>("DateAdded");
 
@@ -262,14 +269,9 @@ namespace HorseMarket.Infra.Migrations
                     b.Property<string>("Url")
                         .IsRequired();
 
-                    b.Property<int>("UserId");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CavaloId");
-
-                    b.HasIndex("UserId")
-                        .IsUnique();
 
                     b.ToTable("Foto");
                 });
@@ -303,12 +305,7 @@ namespace HorseMarket.Infra.Migrations
                     b.Property<string>("Logradouro")
                         .HasMaxLength(100);
 
-                    b.Property<int>("UserId");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId")
-                        .IsUnique();
 
                     b.ToTable("Localidade");
                 });
@@ -365,6 +362,14 @@ namespace HorseMarket.Infra.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
+            modelBuilder.Entity("HorseMarket.Core.Aggregate.Entities.User", b =>
+                {
+                    b.HasOne("HorseMarket.Core.SharedKernel.Entitites.Localidade", "Localidade")
+                        .WithOne("User")
+                        .HasForeignKey("HorseMarket.Core.Aggregate.Entities.User", "LocalidadeId")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
             modelBuilder.Entity("HorseMarket.Core.Aggregate.Leilao", b =>
                 {
                     b.HasOne("HorseMarket.Core.SharedKernel.Entitites.Foto", "Foto")
@@ -378,19 +383,6 @@ namespace HorseMarket.Infra.Migrations
                     b.HasOne("HorseMarket.Core.Aggregate.Entities.Cavalo", "Cavalo")
                         .WithMany("Fotos")
                         .HasForeignKey("CavaloId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("HorseMarket.Core.Aggregate.Entities.User", "User")
-                        .WithOne("Foto")
-                        .HasForeignKey("HorseMarket.Core.SharedKernel.Entitites.Foto", "UserId")
-                        .OnDelete(DeleteBehavior.Restrict);
-                });
-
-            modelBuilder.Entity("HorseMarket.Core.SharedKernel.Entitites.Localidade", b =>
-                {
-                    b.HasOne("HorseMarket.Core.Aggregate.Entities.User", "User")
-                        .WithOne("Localidade")
-                        .HasForeignKey("HorseMarket.Core.SharedKernel.Entitites.Localidade", "UserId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618
