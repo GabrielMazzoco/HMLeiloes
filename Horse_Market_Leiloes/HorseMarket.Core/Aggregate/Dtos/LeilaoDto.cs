@@ -4,6 +4,7 @@ namespace HorseMarket.Core.Aggregate.Dtos
 {
     public class LeilaoDto
     {
+        public int Id { get; set; }
         public DateTime Inicio { get; set; }
         public DateTime Fim { get; set; }
         public string Nome { get; set; }
