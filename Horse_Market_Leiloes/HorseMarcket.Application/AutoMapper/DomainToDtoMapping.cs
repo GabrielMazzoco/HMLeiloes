@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using HorseMarket.Core.Aggregate;
 using HorseMarket.Core.Aggregate.Dtos;
+using HorseMarket.Core.Aggregate.Entities;
 
 namespace HorseMarket.Application.AutoMapper
 {
@@ -10,6 +11,10 @@ namespace HorseMarket.Application.AutoMapper
         {
             CreateMap<Leilao, LeilaoDto>()
                 .ForMember(dest => dest.FotoUrl, opt => opt.MapFrom(src => src.Foto.Url));
+
+            CreateMap<Lote, LoteRegisterDto>();
+
+            CreateMap<Cavalo, CavaloDto>();
         }
     }
 }

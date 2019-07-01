@@ -37,7 +37,7 @@ namespace HorseMarket.Infra.Migrations
                         .IsRequired()
                         .HasMaxLength(20);
 
-                    b.Property<int>("HarasId");
+                    b.Property<int?>("HarasId");
 
                     b.Property<int?>("LocalidadeId");
 

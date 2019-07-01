@@ -29,6 +29,10 @@ namespace HorseMarket.Application.AutoMapper
             CreateMap<FotoForCreationDto, Foto>();
 
             CreateMap<LeilaoToCreateDto, Leilao>();
+
+            CreateMap<LoteRegisterDto, Lote>();
+
+            CreateMap<CavaloDto, Cavalo>();
         }
     }
 }

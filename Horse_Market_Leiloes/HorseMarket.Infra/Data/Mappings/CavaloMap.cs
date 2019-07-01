@@ -50,7 +50,8 @@ namespace HorseMarket.Infra.Data.Mappings
             builder.HasOne(x => x.Haras)
                 .WithMany(x => x.Cavalos)
                 .HasForeignKey(x => x.HarasId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired(false);
 
             builder.HasOne(x => x.Localidade)
                 .WithOne(x => x.Cavalo)

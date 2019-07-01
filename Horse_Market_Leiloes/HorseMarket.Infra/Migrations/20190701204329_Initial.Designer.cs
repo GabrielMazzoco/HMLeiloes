@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HorseMarket.Infra.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20190622135342_Initial")]
+    [Migration("20190701204329_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,7 +39,7 @@ namespace HorseMarket.Infra.Migrations
                         .IsRequired()
                         .HasMaxLength(20);
 
-                    b.Property<int>("HarasId");
+                    b.Property<int?>("HarasId");
 
                     b.Property<int?>("LocalidadeId");
 

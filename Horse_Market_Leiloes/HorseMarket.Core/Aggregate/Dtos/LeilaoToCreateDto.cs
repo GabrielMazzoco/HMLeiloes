@@ -15,8 +15,6 @@ namespace HorseMarket.Core.Aggregate.Dtos
         [StringLength(50, MinimumLength = 5, ErrorMessage = "Nome deve conter ao menos 5 caracteres!")]
         public string Nome { get; set; }
 
-        public int? FotoId { get; set; }
-
         [Required]
         public string Contato { get; set; }
 

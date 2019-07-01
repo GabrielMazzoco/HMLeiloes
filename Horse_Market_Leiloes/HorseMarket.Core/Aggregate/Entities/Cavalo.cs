@@ -12,7 +12,7 @@ namespace HorseMarket.Core.Aggregate.Entities
         public string Pelagem { get; set; }
         public DateTime DataNascimento { get; set; }
         public string Estagio { get; set; }
-        public int HarasId { get; set; }
+        public int? HarasId { get; set; }
         public int? LocalidadeId { get; set; }
         public int UserId { get; set; }
         public virtual string Mae { get; set; }

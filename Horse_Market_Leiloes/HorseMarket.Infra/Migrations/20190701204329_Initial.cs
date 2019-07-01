@@ -96,7 +96,7 @@ namespace HorseMarket.Infra.Migrations
                     Pelagem = table.Column<string>(maxLength: 100, nullable: true),
                     DataNascimento = table.Column<DateTime>(nullable: false),
                     Estagio = table.Column<string>(maxLength: 100, nullable: false),
-                    HarasId = table.Column<int>(nullable: false),
+                    HarasId = table.Column<int>(nullable: true),
                     LocalidadeId = table.Column<int>(nullable: true),
                     UserId = table.Column<int>(nullable: false),
                     Mae = table.Column<string>(maxLength: 100, nullable: false),
