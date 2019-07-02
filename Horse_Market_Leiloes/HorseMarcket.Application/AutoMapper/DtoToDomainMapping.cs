@@ -33,6 +33,8 @@ namespace HorseMarket.Application.AutoMapper
             CreateMap<LoteRegisterDto, Lote>();
 
             CreateMap<CavaloDto, Cavalo>();
+
+            CreateMap<LanceDto, Lance>();
         }
     }
 }

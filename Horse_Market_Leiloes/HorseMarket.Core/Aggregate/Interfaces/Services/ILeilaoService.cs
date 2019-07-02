@@ -11,5 +11,6 @@ namespace HorseMarket.Core.Aggregate.Interfaces.Services
         int CreateLeilao(LeilaoToCreateDto leilaoToCreateDto);
         bool AddFotoLeilao(FotoForCreationDto fotoForCreationDto, Cloudinary cloudinary);
         Task<IEnumerable<LeilaoDto>> GetLeiloes();
+        Task<LeilaoDto> GetLeilao(int idLeilao);
     }
 }

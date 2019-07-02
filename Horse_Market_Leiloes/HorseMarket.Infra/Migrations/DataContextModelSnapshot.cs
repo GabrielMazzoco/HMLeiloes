@@ -148,7 +148,7 @@ namespace HorseMarket.Infra.Migrations
 
                     b.Property<decimal>("Incremento");
 
-                    b.Property<int>("LanceAtualId");
+                    b.Property<int?>("LanceAtualId");
 
                     b.Property<decimal>("LanceMinimo");
 

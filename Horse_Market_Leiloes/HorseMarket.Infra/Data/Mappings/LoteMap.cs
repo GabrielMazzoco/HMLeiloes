@@ -23,7 +23,7 @@ namespace HorseMarket.Infra.Data.Mappings
                 .IsRequired();
 
             builder.Property(x => x.LanceAtualId)
-                .IsRequired();
+                .IsRequired(false);
 
             builder.Property(x => x.Incremento)
                 .IsRequired();

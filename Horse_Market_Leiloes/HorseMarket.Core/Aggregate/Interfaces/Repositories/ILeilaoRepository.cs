@@ -7,5 +7,6 @@ namespace HorseMarket.Core.Aggregate.Interfaces.Repositories
     public interface ILeilaoRepository : IRepository<Leilao>
     {
         Task<IEnumerable<Leilao>> GetLeiloes();
+        Task<Leilao> GetLeilao(int idLeilao);
     }
 }

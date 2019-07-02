@@ -21,5 +21,13 @@ namespace HorseMarket.Infra.Data.Repositories
                 .Where(x => x.Ativo)
                 .ToListAsync();
         }
+
+        public async Task<Leilao> GetLeilao(int idLeilao)
+        {
+            return await _dbContext.Leiloes
+                .Include(x => x.Foto)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(x => x.Ativo && x.Id == idLeilao);
+        }
     }
 }

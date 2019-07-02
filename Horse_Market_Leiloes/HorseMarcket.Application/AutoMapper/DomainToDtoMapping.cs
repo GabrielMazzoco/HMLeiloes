@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Linq;
+using AutoMapper;
 using HorseMarket.Core.Aggregate;
 using HorseMarket.Core.Aggregate.Dtos;
 using HorseMarket.Core.Aggregate.Entities;
@@ -14,7 +15,8 @@ namespace HorseMarket.Application.AutoMapper
 
             CreateMap<Lote, LoteRegisterDto>();
 
-            CreateMap<Cavalo, CavaloDto>();
+            CreateMap<Cavalo, CavaloDto>()
+                .ForMember(dest => dest.FotoUrl, opt => opt.MapFrom(src => src.Fotos.First().Url)); 
         }
     }
 }

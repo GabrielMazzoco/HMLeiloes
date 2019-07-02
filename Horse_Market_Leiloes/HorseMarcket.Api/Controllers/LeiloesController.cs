@@ -45,6 +45,20 @@ namespace HorseMarket.Api.Controllers
             }
         }
 
+        [HttpGet("{idLeilao}")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetLeilao(int idLeilao)
+        {
+            try
+            {
+                return Ok(await _leilaoService.GetLeilao(idLeilao));
+            }
+            catch (Exception exception)
+            {
+                return BadRequest(exception);
+            }
+        }
+
         [HttpPost]
         public IActionResult CreateLeilao([FromBody] LeilaoToCreateDto leilaoToCreateDto)
         {

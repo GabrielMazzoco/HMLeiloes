@@ -21,12 +21,14 @@ namespace HorseMarket.Infra.CrossCutting
             services.AddScoped<ILeilaoService, LeilaoService>();
             services.AddScoped<IFotoService, FotoService>();
             services.AddScoped<ILoteService, LoteService>();
+            services.AddScoped<ILanceService, LanceService>();
 
             // Repositories
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<ILeilaoRepository, LeilaoRepository>();
             services.AddScoped<IFotoRepository, FotoRepository>();
             services.AddScoped<ILoteRepository, LoteRepository>();
+            services.AddScoped<ILanceRepository, LanceRepository>();
 
             services.AddScoped<DataContext>();
         }

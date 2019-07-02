@@ -8,7 +8,7 @@ namespace HorseMarket.Core.Aggregate.Entities
         public int CavaloId { get; set; }
         public decimal LanceMinimo { get; set; }
         public int Cobertura { get; set; }
-        public int LanceAtualId { get; set; }
+        public int? LanceAtualId { get; set; }
         public decimal Incremento { get; set; }
         public int LeilaoId { get; set; }
 

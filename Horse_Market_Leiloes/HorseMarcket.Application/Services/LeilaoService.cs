@@ -85,5 +85,19 @@ namespace HorseMarket.Application.Services
 
             return null;
         }
+
+        public async Task<LeilaoDto> GetLeilao(int idLeilao)
+        {
+            var leiloes = await _leilaoRepository.GetLeilao(idLeilao);
+
+            if (leiloes != null)
+            {
+                var leilaoToReturn = _mapper.Map<LeilaoDto>(leiloes);
+
+                return leilaoToReturn;
+            }
+
+            return null;
+        }
     }
 }

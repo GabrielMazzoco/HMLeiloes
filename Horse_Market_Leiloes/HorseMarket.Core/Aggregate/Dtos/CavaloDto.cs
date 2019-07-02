@@ -13,5 +13,6 @@ namespace HorseMarket.Core.Aggregate.Dtos
         public int UserId { get; set; }
         public virtual string Mae { get; set; }
         public virtual string Pai { get; set; }
+        public string FotoUrl { get; set; }
     }
 }

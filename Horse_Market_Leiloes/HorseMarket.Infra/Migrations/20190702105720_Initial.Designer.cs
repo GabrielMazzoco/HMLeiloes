@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HorseMarket.Infra.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20190701204329_Initial")]
+    [Migration("20190702105720_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -150,7 +150,7 @@ namespace HorseMarket.Infra.Migrations
 
                     b.Property<decimal>("Incremento");
 
-                    b.Property<int>("LanceAtualId");
+                    b.Property<int?>("LanceAtualId");
 
                     b.Property<decimal>("LanceMinimo");
 

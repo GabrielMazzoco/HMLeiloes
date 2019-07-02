@@ -184,7 +184,7 @@ namespace HorseMarket.Infra.Migrations
                     CavaloId = table.Column<int>(nullable: false),
                     LanceMinimo = table.Column<decimal>(nullable: false),
                     Cobertura = table.Column<int>(nullable: false),
-                    LanceAtualId = table.Column<int>(nullable: false),
+                    LanceAtualId = table.Column<int>(nullable: true),
                     Incremento = table.Column<decimal>(nullable: false),
                     LeilaoId = table.Column<int>(nullable: false)
                 },
