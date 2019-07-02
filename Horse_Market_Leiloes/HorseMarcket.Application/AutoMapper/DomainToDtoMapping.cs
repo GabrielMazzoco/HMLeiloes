@@ -16,7 +16,7 @@ namespace HorseMarket.Application.AutoMapper
             CreateMap<Lote, LoteRegisterDto>();
 
             CreateMap<Cavalo, CavaloDto>()
-                .ForMember(dest => dest.FotoUrl, opt => opt.MapFrom(src => src.Fotos.First().Url)); 
+                .ForMember(dest => dest.FotoUrl, opt => opt.MapFrom(src => src.Fotos.FirstOrDefault().Url)); 
         }
     }
 }

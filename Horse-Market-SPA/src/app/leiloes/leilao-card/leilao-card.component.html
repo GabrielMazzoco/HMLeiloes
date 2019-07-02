@@ -9,7 +9,7 @@
   </div>
   <div class="card-body p-1">
     <h3 class="card-title text-center mb-1 mt-1">
-      <i class="nc-icon nc-alert-circle-i mr-2"></i> <a href="">{{ leilao.nome }}</a>
+      <i class="nc-icon nc-alert-circle-i mr-2"></i> <a [routerLink]="['/detalhar-leilao/', leilao.id]">{{ leilao.nome }}</a>
     </h3>
   </div>
 </div>

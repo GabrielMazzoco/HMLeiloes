@@ -20,7 +20,7 @@ import { HomeModule } from './home/home.module';
 import { InfraModule } from './infra/infra.module';
 import { RequestStatusService } from './infra/request-status.service';
 import { RegisterComponent } from './register/register.component';
-import { LeilaoCardComponent } from './leiloes/leilao-card/leilao-card.component';
+import { DetalharLeilaoComponent } from './leiloes/detalhar-leilao/detalhar-leilao.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -34,7 +34,8 @@ export function tokenGetter() {
     ProfileComponent,
     NavbarComponent,
     FooterComponent,
-    RegisterComponent
+    RegisterComponent,
+    DetalharLeilaoComponent
   ],
   imports: [
     BrowserModule,

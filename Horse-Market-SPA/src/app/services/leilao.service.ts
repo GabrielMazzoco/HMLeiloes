@@ -27,4 +27,15 @@ export class LeilaoService implements BaseService {
       .buildGet();
     }
 
+    getLeilao(handlerSucess: (value: any) => void, handlerError: (value: any) => void, idLeilao: string) {
+      return new HttpConnectionBuilder<any>(
+        this.httpConnection,
+        this.requestStatusService
+      )
+      .addServerDomain(`${this.baseUrl}Leiloes/${idLeilao}`)
+      .addHandlerSuccess(handlerSucess)
+      .addHandlerError(handlerError)
+      .buildGet();
+    }
+
 }

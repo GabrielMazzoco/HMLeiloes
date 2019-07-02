@@ -1,0 +1,35 @@
+<div class="wrapper">
+    <div class="page-header section-dark mt-4" style="background-color: #AAAAAA;">
+        <div class="filter"></div>
+        <div class="content-center">
+            <div class="container">
+                    <h2 class="title">{{leilao.nome}}</h2>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="card mb-4">
+                                <div class="card-img-wrapper">
+                                  <img
+                                    class="card-img-top"
+                                    src="{{ leilao.fotoUrl || '/assets/img/cavalo.jpg' }}"
+                                    alt="{{ leilao.nome }}"
+                                  />
+                                  
+                                </div>
+                                <div class="card-body p-1">
+                                  <h3 class="card-title text-center mb-1 mt-1">
+                                    <i class="nc-icon nc-alert-circle-i mr-2"></i> <a [routerLink]="['/detalhar-leilao/', leilao.id]">{{ leilao.nome }}</a>
+                                  </h3>
+                                </div>
+                              </div>
+                        </div>
+                    </div>
+
+                <h2 class="presentation-subtitle text-center">{{leilao.descricao}}</h2>
+            </div>
+        </div>
+        <h6 class=" category-absolute ml-auto mr-auto">Designed and coded by Mazzoco Team
+        </h6>
+    </div>
+    <div class="main">
+    </div>
+</div> 

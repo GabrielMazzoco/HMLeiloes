@@ -9,6 +9,7 @@ import { SignupComponent } from './signup/signup.component';
 import { LandingComponent } from './landing/landing.component';
 import { NucleoiconsComponent } from './components/nucleoicons/nucleoicons.component';
 import { RegisterComponent } from './register/register.component';
+import { DetalharLeilaoComponent } from './leiloes/detalhar-leilao/detalhar-leilao.component';
 
 const routes: Routes =[
     { path: 'home',             component: HomeComponent },
@@ -17,6 +18,7 @@ const routes: Routes =[
     { path: 'register',         component: RegisterComponent},
     { path: 'landing',          component: LandingComponent },
     { path: 'nucleoicons',      component: NucleoiconsComponent },
+    { path: 'detalhar-leilao/:id', component: DetalharLeilaoComponent},
     { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

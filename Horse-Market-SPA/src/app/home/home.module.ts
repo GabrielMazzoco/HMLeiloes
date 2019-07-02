@@ -20,7 +20,7 @@ import { LeilaoService } from 'app/services/leilao.service';
         ComponentsModule
     ],
     declarations: [ HomeComponent, LeilaoCardComponent ],
-    exports:[ HomeComponent ],
+    exports: [ HomeComponent ],
     providers: [LeilaoService]
 })
 export class HomeModule { }
