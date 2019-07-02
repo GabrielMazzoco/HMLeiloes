@@ -32,7 +32,7 @@ namespace HorseMarket.Application.Services
         public async Task<LanceDto> RealizarLance(LanceDto lanceDto)
         {
             var user = _authRepository.Find(x => x.Id == lanceDto.UserId).FirstOrDefault();
-            if (user == null)
+            if (user == null || user.Banido)
             {
                 throw new Exception("Id de Usuario invalido!");
             }
